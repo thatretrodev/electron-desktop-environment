@@ -12,18 +12,18 @@ function createWindow() {
 
 	menuWindow = new BrowserWindow({
 		width: screenSize.width,
-		height: 32,
+		height: 56,
 		x: 0,
-		y: screenSize.height - 32,
+		y: screenSize.height - 56,
 		resizable: false,
 		boarderless: true,
 		frame: false,
 		webPreferences: {
 			preload: path.join(__dirname, "../menu/preload.js")
-		},
+		}
 	});
 
-	//menuWindow.loadFile(path.join(__dirname, "../menu/dist/index.html"));
+	menuWindow.loadFile(path.join(__dirname, "./web/index.html"));
 
 	menuWindow.setMenu(null);
 
