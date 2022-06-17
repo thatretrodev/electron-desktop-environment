@@ -29,15 +29,13 @@ function createWindow() {
 		y: 0,
 		resizable: false,
 		frame: false,
-		webPreferences: {
-			preload: path.join(__dirname, "../menu/preload.js")
-		},
 		backgroundColor: "#2D3748"
 	});
 
 	menuWindow.loadFile(path.join(__dirname, "./web/index.html"));
 
 	menuWindow.setMenu(null);
+	desktopWindow.setMenu(null);
 
 	// Open DevTools if it's enabled.
 
