@@ -3,7 +3,7 @@ const { dialog, app, BrowserWindow } = require('electron');
 const fs = require('fs');
 const path = require('path');
 
-let menuWindow;
+let menuWindow, desktopWindow;
 
 function createWindow() {
 	const screenSize = require('electron').screen.getPrimaryDisplay().size;
@@ -16,11 +16,23 @@ function createWindow() {
 		x: 0,
 		y: screenSize.height - 56,
 		resizable: false,
-		boarderless: true,
 		frame: false,
 		webPreferences: {
 			preload: path.join(__dirname, "../menu/preload.js")
 		}
+	});
+
+	desktopWindow = new BrowserWindow({
+		width: screenSize.width,
+		height: screenSize.height - 56,
+		x: 0,
+		y: 0,
+		resizable: false,
+		frame: false,
+		webPreferences: {
+			preload: path.join(__dirname, "../menu/preload.js")
+		},
+		backgroundColor: "#2D3748"
 	});
 
 	menuWindow.loadFile(path.join(__dirname, "./web/index.html"));
